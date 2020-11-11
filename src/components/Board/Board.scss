@@ -1,16 +1,23 @@
 .Board {
-  width: 600px;
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(5, 100px);
-  grid-template-rows: repeat(5, 100px);
-  grid-auto-flow: row;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
 
-  .box {
-    background-color: lightgrey;
-    color: #fff;
-    border-radius: 5px;
-    padding: 20px;
-    font-size: 150%;
+  .Board-wrapper {
+    width: 800px;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(5, 150px);
+    grid-template-rows: repeat(5, 150px);
+    grid-auto-flow: row;
+
+    .box {
+      background-color: lightgrey;
+      color: #fff;
+      border-radius: 5px;
+      padding: 20px;
+      font-size: 150%;
+    }
   }
 }

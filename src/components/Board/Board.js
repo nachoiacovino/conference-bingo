@@ -30,12 +30,14 @@ const Board = () => {
   ];
 
   return (
-    <div className="Board">
-      {data.map((item, i) => (
-        <div className="box">
-          {i + 1} {item.text}
-        </div>
-      ))}
+    <div class="Board">
+      <div className="Board-wrapper">
+        {data.map((item, i) => (
+          <div className="box">
+            {i + 1} {item.text}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
