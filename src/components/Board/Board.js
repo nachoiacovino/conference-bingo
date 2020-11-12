@@ -90,7 +90,7 @@ const Board = () => {
       setBingos(bingos + 1);
       return true;
     };
-    console.log(checkRow());
+    checkRow();
 
     // Column
     if (index < limit) {
@@ -102,18 +102,24 @@ const Board = () => {
         i < startNum + limit * (limit - 1) + 1;
         i += limit
       ) {
-        console.log(startNum);
-        console.log(startNum + limit * (limit - 1));
         if (!indices.includes(i)) return false;
       }
       setBingos(bingos + 1);
       return true;
     };
-    console.log(checkColumn());
+    checkColumn();
 
     // Diagonal A
-    if (index === 0) {
-    }
+    const checkDiagonalA = () => {
+      const startNum = index % (limit + 1);
+      for (let i = startNum; i < limit * limit; i += limit + 1) {
+        if (!indices.includes(i)) return false;
+      }
+      setBingos(bingos + 1);
+      return true;
+    };
+
+    checkDiagonalA();
 
     // Diagonal B
     if (index === limit - 1) {
