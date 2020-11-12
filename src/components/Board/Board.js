@@ -93,8 +93,6 @@ const Board = () => {
     checkRow();
 
     // Column
-    if (index < limit) {
-    }
     const checkColumn = () => {
       const startNum = index % 5;
       for (
@@ -111,19 +109,25 @@ const Board = () => {
 
     // Diagonal A
     const checkDiagonalA = () => {
-      const startNum = index % (limit + 1);
+      const startNum = 0;
       for (let i = startNum; i < limit * limit; i += limit + 1) {
         if (!indices.includes(i)) return false;
       }
       setBingos(bingos + 1);
       return true;
     };
-
-    checkDiagonalA();
+    if (index % (limit + 1) === 0) checkDiagonalA();
 
     // Diagonal B
-    if (index === limit - 1) {
-    }
+    const checkDiagonalB = () => {
+      const startNum = limit - 1;
+      for (let i = startNum; i < limit * startNum + 1; i += startNum) {
+        if (!indices.includes(i)) return false;
+      }
+      setBingos(bingos + 1);
+      return true;
+    };
+    if (index % (limit - 1) === 0) checkDiagonalB();
   };
 
   return (
