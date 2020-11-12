@@ -6,11 +6,11 @@
   background-color: rgb(150, 230, 157);
 
   .Board-wrapper {
-    width: 800px;
+    width: 70vw;
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: repeat(5, 150px);
-    grid-template-rows: repeat(5, 150px);
+    grid-template-columns: repeat(5, 12vw);
+    grid-template-rows: repeat(5, 12vw);
     grid-auto-flow: row;
 
     .box {
