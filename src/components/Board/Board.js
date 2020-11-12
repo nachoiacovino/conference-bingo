@@ -1,6 +1,6 @@
 import './Board.scss';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 
 const Board = () => {
@@ -47,7 +47,9 @@ const Board = () => {
     { id: uuid(), text: 'sorry, i was on mute', active: false },
     { id: uuid(), text: 'can you repeate, please?', active: false },
   ]);
-  const [indices, setIndices] = useState([12]);
+  const [indices, setIndices] = useState([]);
+  const [bingo, setBingo] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(null);
 
   const handleClick = (id, index) => {
     setData(
@@ -57,16 +59,52 @@ const Board = () => {
     );
 
     if (indices.includes(index)) {
-      setIndices(indices.filter((i) => i !== index));
+      setIndices(() =>
+        indices.filter((i) => i !== index).sort((a, b) => a - b),
+      );
     } else {
-      setIndices([...indices, index]);
+      setIndices(() => [...indices, index].sort((a, b) => a - b));
     }
 
+    setCurrentIndex(index);
+  };
+
+  useEffect(() => {
+    checkBingo(currentIndex);
+    console.log(indices);
+  }, [currentIndex]);
+
+  const checkBingo = (index) => {
+    const limit = 5;
     // Possible bingos
-    // 0 - 1 - 2 - 3 - 4
-    // 0 - 6 - 12 - 18 - 24
-    // 4 - 8 - 12 - 16 - 20
-    // 0 - 5 - 10 - 15 - 20
+    // 0 - 1 - 2 - 3 - 4 - row
+    // 0 - 5 - 10 - 15 - 20 - column
+    // 0 - 6 - 12 - 18 - 24 - diagonal A
+    // 4 - 8 - 12 - 16 - 20 - diagonal B
+
+    // Row
+    /*     if (index % limit === 0) { */
+    const checkRow = () => {
+      const startNum = Math.floor(index / limit) * limit;
+      for (let i = startNum; i < startNum + limit; i++) {
+        if (!indices.includes(i)) return false;
+      }
+      setBingo(bingo + 1);
+      return true;
+    };
+    console.log(checkRow());
+
+    // Column
+    if (index < limit) {
+    }
+
+    // Diagonal A
+    if (index === 0) {
+    }
+
+    // Diagonal B
+    if (index === limit - 1) {
+    }
   };
 
   return (
@@ -78,9 +116,10 @@ const Board = () => {
             key={item.id}
             onClick={() => handleClick(item.id, index)}
           >
-            {/* {i + 1} */} {item.text}
+            {index} {/* {item.text} */}
           </div>
         ))}
+        {bingo && <div>bingos: {bingo}</div>}
       </div>
     </div>
   );
