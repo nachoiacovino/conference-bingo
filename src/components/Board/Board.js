@@ -49,7 +49,7 @@ const Board = () => {
   ]);
   const [indices, setIndices] = useState([12]);
   const [bingos, setBingos] = useState(0);
-  const [currentIndex, setCurrentIndex] = useState(null);
+  const [lastIndex, setLastIndex] = useState(null);
 
   const handleClick = (id, index) => {
     setData(
@@ -66,12 +66,12 @@ const Board = () => {
       setIndices(() => [...indices, index].sort((a, b) => a - b));
     }
 
-    setCurrentIndex(index);
+    setLastIndex(index);
   };
 
   useEffect(() => {
-    checkBingo(currentIndex);
-  }, [currentIndex]);
+    checkBingo(lastIndex);
+  }, [lastIndex]);
 
   const checkBingo = (index) => {
     const limit = 5;
