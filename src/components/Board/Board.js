@@ -47,8 +47,8 @@ const Board = () => {
     { id: uuid(), text: 'sorry, i was on mute', active: false },
     { id: uuid(), text: 'can you repeate, please?', active: false },
   ]);
-  const [indices, setIndices] = useState([]);
-  const [bingo, setBingo] = useState(0);
+  const [indices, setIndices] = useState([12]);
+  const [bingos, setBingos] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(null);
 
   const handleClick = (id, index) => {
@@ -71,7 +71,6 @@ const Board = () => {
 
   useEffect(() => {
     checkBingo(currentIndex);
-    console.log(indices);
   }, [currentIndex]);
 
   const checkBingo = (index) => {
@@ -83,13 +82,12 @@ const Board = () => {
     // 4 - 8 - 12 - 16 - 20 - diagonal B
 
     // Row
-    /*     if (index % limit === 0) { */
     const checkRow = () => {
       const startNum = Math.floor(index / limit) * limit;
       for (let i = startNum; i < startNum + limit; i++) {
         if (!indices.includes(i)) return false;
       }
-      setBingo(bingo + 1);
+      setBingos(bingos + 1);
       return true;
     };
     console.log(checkRow());
@@ -97,6 +95,21 @@ const Board = () => {
     // Column
     if (index < limit) {
     }
+    const checkColumn = () => {
+      const startNum = index % 5;
+      for (
+        let i = startNum;
+        i < startNum + limit * (limit - 1) + 1;
+        i += limit
+      ) {
+        console.log(startNum);
+        console.log(startNum + limit * (limit - 1));
+        if (!indices.includes(i)) return false;
+      }
+      setBingos(bingos + 1);
+      return true;
+    };
+    console.log(checkColumn());
 
     // Diagonal A
     if (index === 0) {
@@ -119,7 +132,7 @@ const Board = () => {
             {index} {/* {item.text} */}
           </div>
         ))}
-        {bingo && <div>bingos: {bingo}</div>}
+        {bingos && <div>bingos: {bingos}</div>}
       </div>
     </div>
   );
