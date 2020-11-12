@@ -47,23 +47,36 @@ const Board = () => {
     { id: uuid(), text: 'sorry, i was on mute', active: false },
     { id: uuid(), text: 'can you repeate, please?', active: false },
   ]);
+  const [indices, setIndices] = useState([12]);
 
-  const handleClick = (id) => {
+  const handleClick = (id, index) => {
     setData(
       data.map((item) =>
         item.id === id ? { ...item, active: !item.active } : item,
       ),
     );
+
+    if (indices.includes(index)) {
+      setIndices(indices.filter((i) => i !== index));
+    } else {
+      setIndices([...indices, index]);
+    }
+
+    // Possible bingos
+    // 0 - 1 - 2 - 3 - 4
+    // 0 - 6 - 12 - 18 - 24
+    // 4 - 8 - 12 - 16 - 20
+    // 0 - 5 - 10 - 15 - 20
   };
 
   return (
     <div className="Board">
       <div className="Board-wrapper">
-        {data.map((item, i) => (
+        {data.map((item, index) => (
           <div
             className={`box ${item.active && 'active'}`}
             key={item.id}
-            onClick={() => handleClick(item.id)}
+            onClick={() => handleClick(item.id, index)}
           >
             {/* {i + 1} */} {item.text}
           </div>
