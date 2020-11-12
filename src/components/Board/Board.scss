@@ -3,6 +3,7 @@
   height: 100vh;
   justify-content: center;
   align-items: center;
+  background-color: rgb(150, 230, 157);
 
   .Board-wrapper {
     width: 800px;
@@ -13,14 +14,13 @@
     grid-auto-flow: row;
 
     .box {
-      background-color: lightgrey;
-      color: #fff;
+      background-color: white;
       border-radius: 5px;
       padding: 20px;
       font-size: 120%;
 
       &.active {
-        background: lightgreen;
+        color: lightgrey;
         text-decoration: line-through;
       }
     }
