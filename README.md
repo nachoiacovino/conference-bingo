@@ -18,7 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 - sass. To use .scss files.
 - prettier. My code formatter of choice.
-- confetti.js - I believe it was the easiest, cleanest way to show a bingo animation.
+- confetti-js - I believe it was the easiest, cleanest way to show a bingo animation.
 - react-device-detect - I didn't need for the base 5x5 grid, but when I decided to also put an option to have a 3x3 game, I needed 4 different configurations for the grid, so this was my easiest option.
 
 I thought about using Redux or Router, but I thought I wasn't needed for this project.

@@ -33,7 +33,19 @@
 
       &.active {
         color: lightgrey;
+        animation: anim 0.8s ease-out;
         text-decoration: line-through;
+      }
+
+      @keyframes anim {
+        from {
+          background-color: lightgrey;
+          color: black;
+        }
+        to {
+          background-color: white;
+          color: lightgrey;
+        }
       }
     }
 

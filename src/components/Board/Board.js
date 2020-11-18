@@ -97,7 +97,7 @@ const Board = ({ limit }) => {
   useEffect(() => {
     const confettiSettings = {
       target: 'confetti-holder',
-      max: '80',
+      max: '150',
       size: '2',
       clock: '150',
       start_from_edge: true,
