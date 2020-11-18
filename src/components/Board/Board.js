@@ -47,12 +47,11 @@ const baseData = [
   { id: uuid(), text: 'can you repeate, please?', active: false },
 ];
 
-const Board = () => {
+const Board = ({ limit }) => {
   const [data, setData] = useState([]);
   const [indices, setIndices] = useState([12]);
   const [bingos, setBingos] = useState(0);
   const [lastIndex, setLastIndex] = useState(null);
-  const [limit] = useState(5);
 
   useEffect(() => {
     let newData = [...baseData];

@@ -1,6 +1,6 @@
 import './Landing.scss';
 
-const Landing = () => {
+const Landing = ({ setLimit }) => {
   return (
     <div className="Landing">
       <div class="Landing-box">
@@ -16,10 +16,18 @@ const Landing = () => {
         </p>
         <p>You can play in two ways, 3x3 or 5x5, you decide!</p>
         <div class="Landing-buttons">
-          <button type="button" className="Landing-button">
+          <button
+            type="button"
+            className="Landing-button"
+            onClick={() => setLimit(3)}
+          >
             3x3
           </button>
-          <button type="button" className="Landing-button">
+          <button
+            type="button"
+            className="Landing-button"
+            onClick={() => setLimit(5)}
+          >
             5x5
           </button>
         </div>
