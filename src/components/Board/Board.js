@@ -26,7 +26,6 @@ const Board = () => {
     },
     { id: uuid(), text: 'can somebody grant presenter rights?', active: false },
     { id: uuid(), text: 'can you email that to everyone?', active: false },
-    { id: uuid(), text: 'CONF CALL BINGO', active: true },
     { id: uuid(), text: 'sorry, i had problems logging in', active: false },
     { id: uuid(), text: '(animal noises in the background)', active: false },
     {
@@ -51,6 +50,27 @@ const Board = () => {
   const [indices, setIndices] = useState([12]);
   const [bingos, setBingos] = useState(0);
   const [lastIndex, setLastIndex] = useState(null);
+  const [limit] = useState(5);
+
+  useEffect(() => {
+    const insert = (arr, index, newItem) => [
+      // part of the array before the specified index
+      ...arr.slice(0, index),
+      // inserted item
+      newItem,
+      // part of the array after the specified index
+      ...arr.slice(index),
+    ];
+
+    setData((d) =>
+      insert(d, (limit * limit) / 2, {
+        id: uuid(),
+        text: 'CONF CALL BINGO',
+        active: true,
+        center: true,
+      }),
+    );
+  }, [limit]);
 
   useEffect(() => {
     checkBingo(lastIndex);
@@ -91,8 +111,6 @@ const Board = () => {
   };
 
   const checkBingo = (index) => {
-    const limit = 5;
-
     // Row
     const checkRow = () => {
       const startNum = Math.floor(index / limit) * limit;
