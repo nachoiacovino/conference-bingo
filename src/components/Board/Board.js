@@ -50,7 +50,7 @@ const baseData = [
 
 const Board = ({ limit }) => {
   const [data, setData] = useState([]);
-  const [indices, setIndices] = useState([12]);
+  const [indices, setIndices] = useState([(limit * limit - 1) / 2]);
   const [bingos, setBingos] = useState(0);
   const [lastIndex, setLastIndex] = useState(null);
 
@@ -121,6 +121,7 @@ const Board = ({ limit }) => {
   };
 
   const checkBingo = (index) => {
+    console.log(data);
     // Row
     const checkRow = () => {
       const startNum = Math.floor(index / limit) * limit;
@@ -141,6 +142,7 @@ const Board = ({ limit }) => {
         i += limit
       ) {
         if (!indices.includes(i)) return false;
+        console.log(!indices.includes(i));
       }
       setBingos(bingos + 1);
       return true;
