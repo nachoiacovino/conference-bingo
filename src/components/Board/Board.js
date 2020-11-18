@@ -171,20 +171,29 @@ const Board = () => {
     if (index % (limit - 1) === 0) checkDiagonalB();
   };
 
+  const renderBox = data.map((item, index) => {
+    if (item.center) {
+      return (
+        <div className="box box-center" key={item.id}>
+          <div className="circle">CONF CALL 😷 BINGO</div>
+        </div>
+      );
+    } else {
+      return (
+        <div
+          className={`box ${item.active && 'active'}`}
+          key={item.id}
+          onClick={() => handleClick(item.id, index)}
+        >
+          {item.text}
+        </div>
+      );
+    }
+  });
+
   return (
     <div className="Board">
-      <div className="Board-wrapper">
-        {data.map((item, index) => (
-          <div
-            className={`box ${item.active && 'active'}`}
-            key={item.id}
-            onClick={() => handleClick(item.id, index)}
-          >
-            {item.text}
-          </div>
-        ))}
-        {/* {bingos && <div>bingos: {bingos}</div>} */}
-      </div>
+      <div className="Board-wrapper">{renderBox}</div>
       <canvas id="confetti-holder"></canvas>
     </div>
   );
