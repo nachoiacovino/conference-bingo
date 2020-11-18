@@ -25,4 +25,4 @@ I thought about using Redux or Router, but I thought I wasn't needed for this pr
 
 ## Conclusions
 
-Overall, it was a fun project to do, the algorithms to check the bingo were the trickiest parts but it was really fulfilling when I got them working.
+Overall, it was a fun project to do, the algorithms to check the bingo were the trickiest part but it was really fulfilling when I got them working. Also, I thought it would be nice to have a way of playing the game in a 3x3 grid, this complicated the algorithms a little bit but I enjoyed the challenge, and it would be very easy to just add any other grid size now.
