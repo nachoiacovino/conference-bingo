@@ -72,6 +72,8 @@ const Board = ({ limit }) => {
     ];
 
     newData = shuffleArray(newData);
+    newData = newData.slice(0, limit * limit - 1);
+
     newData = insert(newData, (limit * limit) / 2, {
       id: uuid(),
       text: 'CONF CALL BINGO',
@@ -192,7 +194,15 @@ const Board = ({ limit }) => {
 
   return (
     <div className="Board">
-      <div className="Board-wrapper">{renderBox}</div>
+      <div
+        className="Board-wrapper"
+        style={{
+          gridTemplateColumns: `repeat(${limit}, 8.5vw)`,
+          gridTemplateRows: `repeat(${limit}, 8.5vw)`,
+        }}
+      >
+        {renderBox}
+      </div>
       <canvas id="confetti-holder"></canvas>
     </div>
   );
