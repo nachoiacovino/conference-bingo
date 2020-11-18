@@ -156,7 +156,7 @@ const Board = () => {
             key={item.id}
             onClick={() => handleClick(item.id, index)}
           >
-            {index} {/* {item.text} */}
+            {/* {index} */} {item.text}
           </div>
         ))}
         {/* {bingos && <div>bingos: {bingos}</div>} */}

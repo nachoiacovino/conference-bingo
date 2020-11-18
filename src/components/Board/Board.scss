@@ -13,16 +13,21 @@
 
   .Board-wrapper {
     display: grid;
-    grid-gap: 0.5vw;
-    grid-template-columns: repeat(5, 9vw);
-    grid-template-rows: repeat(5, 9vw);
+    grid-gap: 1vw;
+    grid-template-columns: repeat(5, 8vw);
+    grid-template-rows: repeat(5, 8vw);
     grid-auto-flow: row;
+
+    @media (max-width: 991px) {
+      grid-template-columns: repeat(5, 18vw);
+      grid-template-rows: repeat(5, 18vw);
+      font-size: 60%;
+    }
 
     .box {
       background-color: white;
       border-radius: 5px;
-      padding: 20px;
-      font-size: 120%;
+      padding: 1vw;
 
       &.active {
         color: lightgrey;
