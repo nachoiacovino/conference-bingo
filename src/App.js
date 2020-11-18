@@ -1,11 +1,12 @@
 import './App.scss';
 
-import Board from './components/Board/Board';
+import Landing from './components/Landing/Landing';
 
 const App = () => {
   return (
     <div>
-      <Board />
+      <Landing />
+      {/* <Board /> */}
     </div>
   );
 };
