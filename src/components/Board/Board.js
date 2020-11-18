@@ -1,5 +1,6 @@
 import './Board.scss';
 
+import ConfettiGenerator from 'confetti-js';
 import { useEffect, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 
@@ -73,6 +74,22 @@ const Board = () => {
     checkBingo(lastIndex);
   }, [lastIndex]);
 
+  useEffect(() => {
+    const confettiSettings = {
+      target: 'confetti-holder',
+      max: '80',
+      size: '2',
+      clock: '150',
+      start_from_edge: true,
+      respawn: false,
+    };
+    const confetti = new ConfettiGenerator(confettiSettings);
+
+    if (bingos) confetti.render();
+
+    return () => confetti.clear();
+  }, [bingos]);
+
   const checkBingo = (index) => {
     const limit = 5;
     // Possible bingos
@@ -142,8 +159,9 @@ const Board = () => {
             {index} {/* {item.text} */}
           </div>
         ))}
-        {bingos && <div>bingos: {bingos}</div>}
+        {/* {bingos && <div>bingos: {bingos}</div>} */}
       </div>
+      <canvas id="confetti-holder"></canvas>
     </div>
   );
 };

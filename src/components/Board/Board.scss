@@ -4,13 +4,18 @@
   justify-content: center;
   align-items: center;
   background-color: rgb(150, 230, 157);
+  position: relative;
+
+  #confetti-holder {
+    position: absolute;
+    pointer-events: none;
+  }
 
   .Board-wrapper {
-    width: 70vw;
     display: grid;
-    grid-gap: 10px;
-    grid-template-columns: repeat(5, 12vw);
-    grid-template-rows: repeat(5, 12vw);
+    grid-gap: 0.5vw;
+    grid-template-columns: repeat(5, 9vw);
+    grid-template-rows: repeat(5, 9vw);
     grid-auto-flow: row;
 
     .box {
