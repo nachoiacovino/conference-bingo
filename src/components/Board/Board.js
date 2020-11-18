@@ -15,7 +15,7 @@ const baseData = [
     active: false,
   },
   { id: uuid(), text: '(loud painful echo / feedback)', active: false },
-  { id: uuid(), text: 'Next slide, please.', active: false },
+  { id: uuid(), text: 'next slide, please.', active: false },
   { id: uuid(), text: 'can we take this offline?', active: false },
   { id: uuid(), text: 'is ___ on the call?', active: false },
   {
@@ -42,9 +42,10 @@ const baseData = [
   },
   { id: uuid(), text: 'do you see my screen?', active: false },
   { id: uuid(), text: "let's wait for ___!", active: false },
-  { id: uuid(), text: 'You will send the minutes?', active: false },
+  { id: uuid(), text: 'will you send the info?', active: false },
   { id: uuid(), text: 'sorry, i was on mute', active: false },
-  { id: uuid(), text: 'can you repeate, please?', active: false },
+  { id: uuid(), text: 'can you repeat, please?', active: false },
+  { id: uuid(), text: 'can you hear me?', active: false },
 ];
 
 const Board = ({ limit }) => {
@@ -63,11 +64,8 @@ const Board = ({ limit }) => {
         .map((a) => a[1]);
 
     const insert = (arr, index, newItem) => [
-      // part of the array before the specified index
       ...arr.slice(0, index),
-      // inserted item
       newItem,
-      // part of the array after the specified index
       ...arr.slice(index),
     ];
 
@@ -76,7 +74,7 @@ const Board = ({ limit }) => {
 
     newData = insert(newData, (limit * limit) / 2, {
       id: uuid(),
-      text: 'CONF CALL BINGO',
+      text: 'CONF CALL 😷 BINGO',
       active: true,
       center: true,
     });
@@ -176,7 +174,7 @@ const Board = ({ limit }) => {
     if (item.center) {
       return (
         <div className="box box-center" key={item.id}>
-          <div className="circle">CONF CALL 😷 BINGO</div>
+          <div className="circle">{item.text}</div>
         </div>
       );
     } else {
