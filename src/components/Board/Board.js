@@ -136,7 +136,7 @@ const Board = ({ limit }) => {
 
     // Column
     const checkColumn = () => {
-      const startNum = index % 5;
+      const startNum = index % limit;
       for (
         let i = startNum;
         i < startNum + limit * (limit - 1) + 1;

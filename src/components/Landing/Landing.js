@@ -3,7 +3,7 @@ import './Landing.scss';
 const Landing = ({ setLimit }) => {
   return (
     <div className="Landing">
-      <div class="Landing-box">
+      <div className="Landing-box">
         <h1>Welcome to CONF CALL 😷 BINGO!</h1>
         <p>
           Bingo is a game of chance, you will get a random set of phrases and
@@ -15,7 +15,7 @@ const Landing = ({ setLimit }) => {
           your advantage!
         </p>
         <p>You can play in two ways, 3x3 or 5x5, you decide!</p>
-        <div class="Landing-buttons">
+        <div className="Landing-buttons">
           <button
             type="button"
             className="Landing-button"

@@ -14,8 +14,6 @@
   .Board-wrapper {
     display: grid;
     grid-gap: 0.7vw;
-    /*     grid-template-columns: repeat(5, 8.5vw);
-    grid-template-rows: repeat(5, 8.5vw); */
     grid-auto-flow: row;
 
     @media (max-width: 991px) {
