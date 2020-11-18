@@ -52,24 +52,6 @@ const Board = () => {
   const [bingos, setBingos] = useState(0);
   const [lastIndex, setLastIndex] = useState(null);
 
-  const handleClick = (id, index) => {
-    setData(
-      data.map((item) =>
-        item.id === id ? { ...item, active: !item.active } : item,
-      ),
-    );
-
-    if (indices.includes(index)) {
-      setIndices(() =>
-        indices.filter((i) => i !== index).sort((a, b) => a - b),
-      );
-    } else {
-      setIndices(() => [...indices, index].sort((a, b) => a - b));
-    }
-
-    setLastIndex(index);
-  };
-
   useEffect(() => {
     checkBingo(lastIndex);
   }, [lastIndex]);
@@ -90,13 +72,26 @@ const Board = () => {
     return () => confetti.clear();
   }, [bingos]);
 
+  const handleClick = (id, index) => {
+    setData(
+      data.map((item) =>
+        item.id === id ? { ...item, active: !item.active } : item,
+      ),
+    );
+
+    if (indices.includes(index)) {
+      setIndices(() =>
+        indices.filter((i) => i !== index).sort((a, b) => a - b),
+      );
+    } else {
+      setIndices(() => [...indices, index].sort((a, b) => a - b));
+    }
+
+    setLastIndex(index);
+  };
+
   const checkBingo = (index) => {
     const limit = 5;
-    // Possible bingos
-    // 0 - 1 - 2 - 3 - 4 - row
-    // 0 - 5 - 10 - 15 - 20 - column
-    // 0 - 6 - 12 - 18 - 24 - diagonal A
-    // 4 - 8 - 12 - 16 - 20 - diagonal B
 
     // Row
     const checkRow = () => {
