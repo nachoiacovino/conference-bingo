@@ -2,6 +2,7 @@ import './Board.scss';
 
 import ConfettiGenerator from 'confetti-js';
 import { useEffect, useState } from 'react';
+import { isMobile } from 'react-device-detect';
 import { v4 as uuid } from 'uuid';
 
 const baseData = [
@@ -53,6 +54,7 @@ const Board = ({ limit }) => {
   const [indices, setIndices] = useState([(limit * limit - 1) / 2]);
   const [bingos, setBingos] = useState(0);
   const [lastIndex, setLastIndex] = useState(null);
+  const [gridStyle, setGridSyle] = useState({});
 
   useEffect(() => {
     let newData = [...baseData];
@@ -192,15 +194,25 @@ const Board = ({ limit }) => {
     }
   });
 
+  useEffect(() => {
+    if (isMobile) {
+      setGridSyle({
+        gridTemplateColumns: `repeat(${limit}, ${limit === 5 ? '18' : '28'}vw)`,
+        gridTemplateRows: `repeat(${limit}, ${limit === 5 ? '18' : '28'}vw)`,
+      });
+    } else {
+      setGridSyle({
+        gridTemplateColumns: `repeat(${limit}, ${
+          limit === 5 ? '8.5' : '15'
+        }vw)`,
+        gridTemplateRows: `repeat(${limit}, ${limit === 5 ? '8.5' : '15'}vw)`,
+      });
+    }
+  }, [limit]);
+
   return (
     <div className="Board">
-      <div
-        className="Board-wrapper"
-        style={{
-          gridTemplateColumns: `repeat(${limit}, 8.5vw)`,
-          gridTemplateRows: `repeat(${limit}, 8.5vw)`,
-        }}
-      >
+      <div className="Board-wrapper" style={gridStyle}>
         {renderBox}
       </div>
       <canvas id="confetti-holder"></canvas>

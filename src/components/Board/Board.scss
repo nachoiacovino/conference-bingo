@@ -17,8 +17,6 @@
     grid-auto-flow: row;
 
     @media (max-width: 991px) {
-      grid-template-columns: repeat(5, 18vw);
-      grid-template-rows: repeat(5, 18vw);
       font-size: 60%;
     }
 
