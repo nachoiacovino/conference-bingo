@@ -47,6 +47,12 @@ const baseData = [
   { id: uuid(), text: 'sorry, i was on mute', active: false },
   { id: uuid(), text: 'can you repeat, please?', active: false },
   { id: uuid(), text: 'can you hear me?', active: false },
+  { id: uuid(), text: 'could we do this later?', active: false },
+  {
+    id: uuid(),
+    text: '(someone connect and disconnects twice)',
+    active: false,
+  },
 ];
 
 const Board = ({ limit }) => {
