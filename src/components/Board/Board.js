@@ -50,7 +50,7 @@ const baseData = [
   { id: uuid(), text: 'could we do this later?', active: false },
   {
     id: uuid(),
-    text: '(someone connect and disconnects twice)',
+    text: '(someone connects and disconnects twice)',
     active: false,
   },
 ];
